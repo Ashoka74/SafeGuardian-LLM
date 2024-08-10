@@ -1,0 +1,25 @@
+[browser]
+pageTitle = "SafeGuardianLLM - Disaster Rescue Assistant in your pocket"
+layout = "wide"
+
+[server]
+enableXsrfProtection = false
+maxUploadSize=5000
+maxMessageSize=5000
+
+# Font family for all text in the app, except code blocks
+# Accepted values (serif | sans serif | monospace) 
+# Default: "sans serif"
+font = "sans serif"
+
+# Base theme (light or dark)
+base = "dark"
+
+
+[runner]
+magicEnabled = true
+fastReruns = false
+
+
+[client]
+toolbarMode = "auto"
