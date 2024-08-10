@@ -458,13 +458,28 @@ map_1.add_data(
     data=synth_data, name='synth_victims'
 )
 
+# Define a function to assign colors with alpha based on the 'Score' column
+def color_rows(row):
+    score = row['risk_nb']
+    if score == 4:
+        return [f'background-color: rgba(255, 0, 0, 0.3)'] * len(row)  # Red with 30% opacity
+    elif score == 3:
+        return [f'background-color: rgba(255, 165, 0, 0.3)'] * len(row)  # Orange with 30% opacity
+    elif score == 2:
+        return [f'background-color: rgba(255, 255, 0, 0.3)'] * len(row)  # Yellow with 30% opacity
+    elif score == 1:
+        return [f'background-color: rgba(0, 255, 0, 0.3)'] * len(row)  # Green with 30% opacity
+    else:
+        return [f'background-color: rgba(0, 0, 0, 1)'] * len(row)  # White (fully opaque)
+
+# Apply the styling function to the dataframe
 
 if my_dataset is not None :
     parser = filter_dataframe(my_dataset)
     
     st.session_state['parsed_responses'] = parser
-    my_dataset.style.applymap(color_risk, subset=['risk_nb'])
-    st.dataframe(my_dataset)
+    styled_df = my_dataset.style.apply(color_rows, axis=1)
+    st.dataframe(styled_df)
     #st.success(f"Successfully loaded and displayed data from {my_dataset.name}")
     st.session_state['data_loaded'] = True
     # Load the base config
