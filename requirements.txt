@@ -1,6 +1,5 @@
 faster_whisper==0.7.1
 geopy==2.4.0
-ipython==8.23.0
 pandas==2.0.2
 protobuf==4.25.4
 pydub==0.25.1
@@ -10,7 +9,7 @@ sodapy==2.2.0
 streamlit==1.36.0
 streamlit_audiorecorder==0.0.5
 streamlit_geolocation==0.0.10
-numpy==1.26.4
+numpy==1.24.4
 ctranslate2==3.24.0
 python-dotenv
 pydub
@@ -18,14 +17,11 @@ google-generativeai
 ipython
 pandas
 requests
-geopy
 ffmpeg
 firebase_admin
 firebase-admin
 streamlit
 keplergl
-pandas
-numpy
 matplotlib
 seaborn
 stqdm
