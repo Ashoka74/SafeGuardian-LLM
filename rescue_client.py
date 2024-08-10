@@ -17,7 +17,7 @@ from streamlit_extras.stateful_button import button as stateful_button
 from streamlit_keplergl import keplergl_static
 from keplergl import KeplerGl
 
-
+from rescue_tools import path_optimizer
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -474,6 +474,9 @@ if my_dataset is not None :
     with open('configs/victims_config.kgl', 'r') as f:
         victims_config = json.load(f)
 
+    with open('configs/itinerary_config.kgl', 'r') as f:
+        itinerary_config = json.load(f)
+
     if parser.columns.str.contains('date').any():
         # Get the date column name
         date_column = parser.columns[parser.columns.str.contains('date')].values[0]
@@ -493,6 +496,33 @@ if my_dataset is not None :
     map_1.add_data(
         data=parser, name="victims_config"
         )
+    
+    if st.toggle('Show Optimized Paths'):
+        # Get the coordinates of the rescue centers
+
+        # # Plan the rescue route
+        # weighted_route = path_optimizer.get_osrm_trip(
+        #     coordinates=synth_data[['longitude', 'latitude']].values.tolist(),
+        #     weights=synth_data['risk_nb'].apply(path_optimizer.emergency_to_weight).tolist(),
+        #     rescue_center=rescue_centers[0]
+        # )
+
+        # # Add the weighted route to the map
+        # map_1.add_data(weighted_route, name='weighted_route')
+
+        rescue_centers = rescue[['longitude', 'latitude']].values.tolist()[0]
+
+        # Plan the unweighted route
+        unweighted_route = path_optimizer.get_osrm_trip(
+            coordinates=synth_data[['longitude', 'latitude']].values.tolist(),
+            weights=None,
+            rescue_center=rescue_centers
+        )
+        # Add the unweighted route to the map
+        map_1.add_data(unweighted_route, name='optimal_path')
+        base_config['config']['visState']['layers'].extend([layer for layer in itinerary_config['config']['visState']['layers']])
+
+
     
     base_config['config']['visState']['layers'].extend([layer for layer in victims_config['config']['visState']['layers']])
 
