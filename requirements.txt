@@ -13,7 +13,7 @@ numpy==1.24.4
 ctranslate2==3.24.0
 python-dotenv
 pydub
-google-generativeai
+google-generativeai==0.7.1
 ipython
 pandas
 requests
