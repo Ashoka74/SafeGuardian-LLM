@@ -18,14 +18,11 @@ google-generativeai
 ipython
 pandas
 requests
-geopy
 ffmpeg
 firebase_admin
 firebase-admin
 streamlit
 keplergl
-pandas
-numpy
 matplotlib
 seaborn
 stqdm
