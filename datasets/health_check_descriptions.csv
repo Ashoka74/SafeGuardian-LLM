@@ -1,0 +1,37 @@
+description,risk,latitude,longitude,timestamp,risk_nb
+"I am trapped in a building with my arm stuck under debris, and I can barely breathe from the dust.",most_urgent,38.3793,-121.6034,2024-07-26 14:28:21,4
+"My lungs hurt from inhaling smoke, and I am struggling to catch my breath.",most_urgent,38.2803,-122.1984,2024-07-26 01:55:34,4
+"My vision is blurry, and I have a splitting headache after the building collapsed.",most_urgent,37.9283,-122.1304,2024-07-26 04:39:48,4
+"I feel nauseous and dizzy, likely from carbon monoxide poisoning.",most_urgent,37.7853,-121.7224,2024-07-26 12:57:02,4
+"My wounds are becoming infected, and I have no access to antibiotics.",most_urgent,38.3573,-122.3004,2024-07-26 09:50:27,4
+"I have a deep cut on my leg that's bleeding heavily, and I don't have any medical supplies to treat it.",most_urgent,38.5333,-121.7904,2024-07-26 18:50:03,4
+I'm losing consciousness intermittently from lack of food and water.,most_urgent,38.2473,-122.0794,2024-07-26 16:42:24,4
+I am experiencing intense anxiety and panic attacks since the earthquake.,urgent,37.8183,-121.5694,2024-07-26 09:35:19,3
+My back is in agony after being trapped under debris for hours.,urgent,37.9063,-121.6204,2024-07-26 12:40:09,3
+I'm having severe stomach cramps and vomiting from drinking contaminated water.,urgent,38.0603,-121.2124,2024-07-26 22:38:05,3
+"I can barely move my fingers, and my hands are covered in blisters from trying to dig through the rubble.",urgent,38.4013,-121.5014,2024-07-26 10:29:40,3
+I can hardly walk because my ankle is swollen and possibly broken.,urgent,37.9503,-122.0624,2024-07-26 13:37:04,3
+"My child has a high fever and diarrhea, and we can't find any clean water.",urgent,38.2583,-121.4334,2024-07-26 22:50:10,3
+My muscles are cramping and seizing up from the cold and lack of nutrition.,urgent,38.1923,-121.5354,2024-07-26 20:12:42,3
+"My ears are ringing, and I feel disoriented after the explosion.",urgent,38.1483,-121.3824,2024-07-26 14:38:58,3
+"My head is pounding, and I feel dizzy after being hit by falling rubble.",urgent,38.0493,-122.2664,2024-07-26 23:11:07,3
+"I have a fever and chills, and my joints ache all over.",urgent,38.0823,-122.0964,2024-07-26 11:56:03,3
+My lips are cracked and bleeding from dehydration.,urgent,38.0273,-121.8584,2024-07-26 04:26:33,3
+"I have a severe migraine, and the noise and chaos are making it worse.",less_urgent,38.2363,-121.4164,2024-07-26 05:33:04,2
+I am emotionally devastated and in shock from losing my family and home.,less_urgent,38.5443,-122.2494,2024-07-26 13:57:39,2
+"My hands are shaking, and I can't stop shivering from the cold and fear.",less_urgent,38.5003,-121.8074,2024-07-26 09:20:32,2
+I haven't eaten in days and feel weak and lightheaded.,less_urgent,38.5223,-121.8244,2024-07-26 12:13:18,2
+I have severe dehydration and dry mouth because we ran out of clean water.,less_urgent,37.9723,-121.5524,2024-07-26 09:18:10,2
+"My skin is covered in rashes, and the itching is unbearable.",less_urgent,37.7963,-121.7564,2024-07-26 20:02:10,2
+My hands are sore and blistered from clearing debris.,minor,37.7743,-121.3314,2024-07-26 13:16:26,1
+"I have a few cuts and bruises, but they are healing slowly.",minor,37.8293,-121.7394,2024-07-26 06:27:15,1
+"I have a sprained wrist and it's painful to move, but I'm managing to get by.",minor,38.3903,-121.3994,2024-07-26 13:13:54,1
+My lips are chapped and painful from dehydration.,minor,38.0713,-122.1644,2024-07-26 11:03:06,1
+"I'm having trouble focusing due to the stress, but I'm managing.",minor,38.1263,-122.3174,2024-07-26 17:58:16,1
+My back is stiff and sore from carrying heavy loads.,minor,38.0383,-121.6544,2024-07-26 10:09:52,1
+My feet are sore and swollen from walking long distances.,minor,38.0933,-122.2834,2024-07-26 22:46:44,1
+"My joints ache, but it's nothing too serious.",minor,38.5113,-121.3654,2024-07-26 11:36:20,1
+My eyes are irritated and red from the debris in the air.,minor,38.4893,-121.3484,2024-07-26 04:20:12,1
+My skin is dry and itchy from lack of proper hygiene.,minor,37.8073,-121.5864,2024-07-26 21:47:15,1
+"My stomach is upset, and I have occasional diarrhea, but it's under control.",minor,38.1153,-122.0454,2024-07-26 01:44:35,1
+"I'm coughing a lot, but my breathing isn't too affected.",minor,38.1043,-122.2324,2024-07-26 00:43:26,1
