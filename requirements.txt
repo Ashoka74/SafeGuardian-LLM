@@ -1,6 +1,5 @@
 faster_whisper==0.7.1
 geopy==2.4.0
-ipython==8.23.0
 pandas==2.0.2
 protobuf==4.25.4
 pydub==0.25.1
