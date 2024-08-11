@@ -12,7 +12,7 @@
 
 <h2>🌟 Overview</h2>
 
-<p>SafeGuardianAI is an innovative emergency response platform that harnesses the power of artificial intelligence to provide critical support during catastrophic events. By seamlessly integrating real-time data analysis, offline capabilities, and community-driven support, SafeGuardianAI bridges the gap between individuals, communities, and emergency services, ensuring a more coordinated and effective response to disasters.</p>
+<p><b>SafeGuardianAI</b> is an innovative emergency response platform that harnesses the power of artificial intelligence to provide critical support during catastrophic events. By seamlessly integrating real-time data analysis, offline capabilities, and community-driven support, SafeGuardianAI bridges the gap between individuals, communities, and emergency services, ensuring a more coordinated and effective response to disasters.</p>
 
 <h2>🚀 Key Features</h2>
 
@@ -54,6 +54,12 @@
 </ul>
 
 <h2>🚀 Quick Start</h2>
+
+<h3>
+  
+[Live Demo](https://safeguardian-llm.streamlit.app/)
+  
+</h3>
 
 <ol>
   <li>Clone the repository:
