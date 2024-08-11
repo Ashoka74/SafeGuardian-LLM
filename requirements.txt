@@ -1,7 +1,7 @@
 faster_whisper==0.7.1
 geopy==2.4.0
 pandas==2.0.2
-protobuf==4.25.4
+#protobuf==4.25.4
 pydub==0.25.1
 python-dotenv==1.0.1
 Requests==2.32.3
@@ -13,7 +13,8 @@ numpy==1.24.4
 ctranslate2==3.24.0
 python-dotenv
 pydub
-google-generativeai==0.7.1
+google-generativeai
+protobuf
 ipython
 pandas
 requests
