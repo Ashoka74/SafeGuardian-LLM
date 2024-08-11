@@ -32,8 +32,12 @@
 <h2>🖼️ Screenshots</h2>
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/c16a2899-face-4cdb-a61f-1452496f818e" alt="UI Screenshot" width="45%" style="margin-right: 10px;"/>
+  <img src="https://github.com/user-attachments/assets/1ed3b76c-66e1-42eb-9f30-ee64bce13358" alt="UI Screenshot" width="45%" style="margin-right: 10px;"/>
   <img src="https://github.com/user-attachments/assets/e8476376-a64f-4b68-8367-26d671813817" alt="Map View" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/0c3988f3-a136-42b3-814b-117689352dd3" alt="Priority Mapping" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/7cd4525a-abd0-477e-9d83-2ea729635bb9" alt="Optimized Path" width="45%"/>
+
+
 </div>
 
 <h2>🛠️ Tech Stack</h2>
