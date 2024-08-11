@@ -1,4 +1,4 @@
-from victim_tools.llm_utils import GeminiConfig, schema, tool_config_from_mode
+from victim_tools.llm_utils import GeminiConfig, schema#, tool_config_from_mode
 from victim_tools.geolocation_data import geolocation_data
 from victim_tools.rescue_data import get_rescue_data
 from victim_tools.vital_data import update_victim_json
@@ -73,7 +73,7 @@ function_calling = {
 
 system_instructions = "You are a post-disaster bot. Help victims while collecting valuable data for intervention teams. Your aim is to complete this template : {victim_info} Only return JSON output when calling function."
 
-tool_config = tool_config_from_mode(mode='any', fns=function_calling.keys())
+#tool_config = tool_config_from_mode(mode='any', fns=function_calling.keys())
 
 # Gemini setup
 model = genai.GenerativeModel(
