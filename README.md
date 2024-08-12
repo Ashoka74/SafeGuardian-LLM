@@ -64,7 +64,7 @@
 
 <ol>
   <li>Clone the repository:
-    <pre><code>git clone https://github.com/your-repo/SafeGuardianAI.git
+    <pre><code>git clone https://github.com/Ashoka74/SafeGuardianAI-LLM.git
 cd SafeGuardianAI</code></pre>
   </li>
   <li>Install dependencies:
@@ -78,7 +78,7 @@ GEOLOCATOR_API_KEY=your_geolocator_api_key_here
 FIREBASE_CONFIG=your_firebase_config_json_here</code></pre>
   </li>
   <li>Run the application:
-    <pre><code>streamlit run navigation.py</code></pre>
+    <pre><code>streamlit run app</code></pre>
   </li>
 </ol>
 
