@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center">
   <img src="https://github.com/Latticeworks1/safeguardianAI/blob/c00a9b4a0ad56c2fb4b5bfb8138ff2b226a14fce/sglogo.png" alt="SafeGuardianAI Logo" width="200"/>
 
@@ -206,3 +207,6 @@ FIREBASE_CONFIG=your_firebase_config_json_here</code></pre>
 <div align="center">
   <p>Made with ❤️ by the SafeGuardianAI Team</p>
 </div>
+=======
+# SafeGuardian-LLM-private
+>>>>>>> main
