@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div align="center">
   <img src="https://github.com/Latticeworks1/safeguardianAI/blob/c00a9b4a0ad56c2fb4b5bfb8138ff2b226a14fce/sglogo.png" alt="SafeGuardianAI Logo" width="200"/>
 
@@ -15,9 +14,12 @@
 
 <p><b>SafeGuardianAI</b> is an innovative emergency response platform that harnesses the power of artificial intelligence to provide critical support during catastrophic events. By seamlessly integrating real-time data analysis, offline capabilities, and community-driven support, SafeGuardianAI bridges the gap between individuals, communities, and emergency services, ensuring a more coordinated and effective response to disasters.</p>
 
-<h2>🚀 Key Features</h2>
+https://github.com/user-attachments/assets/d19066d3-7d75-4c2c-9a38-00143029a140
 
-<ul>
+
+
+<h2>🚀 Key Features</h2><ul>
+  
   <li>💬 <strong>AI-Powered Chat Interface</strong>: Interact with GuardianAI for personalized emergency assistance and real-time guidance.</li>
   <li>🎙️ <strong>Multi-Modal Activation</strong>: Trigger emergency mode via text, voice commands, or automatic motion detection for hands-free operation.</li>
   <li>👤 <strong>Smart User Profiles</strong>: Store vital information securely for quick access during emergencies, including medical history and emergency contacts.</li>
@@ -207,6 +209,3 @@ FIREBASE_CONFIG=your_firebase_config_json_here</code></pre>
 <div align="center">
   <p>Made with ❤️ by the SafeGuardianAI Team</p>
 </div>
-=======
-# SafeGuardian-LLM-private
->>>>>>> main
