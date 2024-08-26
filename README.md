@@ -194,7 +194,7 @@ FIREBASE_CONFIG=your_firebase_config_json_here</code></pre>
 
 <h2>📄 License</h2>
 
-<p>This project is licensed under the MIT License - see the <a href="LICENSE.md">LICENSE.md</a> file for details.</p>
+<p>This project is licensed under the GNU General Public License- see the <a href="LICENSE.md">LICENSE.md</a> file for details.</p>
 
 <h2>🙏 Acknowledgments</h2>
 
