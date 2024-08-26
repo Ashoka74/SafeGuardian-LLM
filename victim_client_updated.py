@@ -9,9 +9,10 @@ from victim_tools.function_calling import provide_user_location
 from victim_tools.state_manager import StateManager
 from rescue_tools.fetch_vital_data import set_key, update_, json_template
 
-#from streamlit_geolocation import streamlit_geolocation
+from streamlit_geolocation import streamlit_geolocation
 
 import time
+
 import io
 import base64
 import json
@@ -24,7 +25,9 @@ state_manager = StateManager()
 from typing import Dict, Any, List
 import google.generativeai as genai
 from audiorecorder import audiorecorder
+
 from geopy.geocoders import Nominatim
+
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -40,14 +43,6 @@ def get_location_from_wifi() -> str:
         return geolocation_data(os.getenv('geolocator_api'))
     except Exception as e:
         return f"Error occurred: {e}"
-    
-# def get_location_from_user() -> str:
-#     try:
-#         location = streamlit_geolocation()
-#         return location
-#     except Exception as e:
-#         return f"Error occurred: {e}"
-
 
 # Streamlit setup
 st.set_page_config(page_title="Natural Hazard Rescue Bot💬", layout="wide", page_icon="🚑")
@@ -57,6 +52,12 @@ st._config.set_option("runner.fastReruns", "false")
 
 # Initialize state
 
+# # Latitude
+# if "latitude" not in st.session_state:
+#     st.session_state['latitude'] = None
+
+# if "longitude" not in st.session_state:
+#     st.session_state['longitude'] = None
 
 # JSON Schema
 if "json_template" not in st.session_state:
@@ -73,11 +74,10 @@ function_calling = {
     #'get_rescue_data': get_rescue_data,
     #'get_location': provide_user_location,
     #'get_victim_location': get_location_from_wifi,
-    #'get_location': get_location_from_user,
     # Add more functions here!
 }
 
-system_instructions = "You are a post-disaster bot. Help victims while collecting valuable data for intervention teams. Your aim is to complete this template : {victim_info} Return a JSON output when calling function, but also follow-up sentences to keep the conversation going."
+system_instructions = "You are a post-disaster bot. Help victims while collecting valuable data for intervention teams. Your aim is to complete this template : {victim_info} Only return JSON output when calling function."
 
 #tool_config = tool_config_from_mode(mode='any', fns=function_calling.keys())
 
@@ -98,6 +98,7 @@ def main():
     st.title("💬 Natural Hazard Rescue App ⚠️🚑")
     st.write("This bot is designed to help victims of natural disasters by providing support and information. It can also collect valuable data for intervention teams.")
 
+
     # create 3 columns
     left, middle, right = st.columns([.5, .1, .4])
     # Chat input and display
@@ -107,6 +108,8 @@ def main():
     # Victim information display
     with right:
         display_victim_info()
+
+
 
 # create chat container
 def chat_container(height: int):
@@ -119,7 +122,6 @@ def chat_container(height: int):
             # get prompt from text  
             prompt = st.chat_input("Enter Query here") or process_audio(audio)
 
-        # check if first message
         if state_manager.get_conversation_history() == "":
             introduction_str = "Hi, I am SafeGuardianAI. I am here to provide you with support, as well as informing rescue teams of your vital status. Can you speak?"# Please press the button to let me access your location for most accurate assistance."
             try:
@@ -128,29 +130,32 @@ def chat_container(height: int):
                 pass
             state_manager.add_message(role="assistant", content=introduction_str)
 
-        # #location = streamlit_geolocation()
-        # if location['latitude'] is not None:
-        #     state_manager.add_message(role="assistant", content=f"User location: {location}")
-        #     st.session_state['victim_info']['location'] = location
-        #     try:
-        #         geolocator = Nominatim(user_agent="geoapiExercises")
-        #         location_ = geolocator.reverse(f"{location['latitude']}, {location['longitude']}")
-        #         st.warning(f"User location: {location}")
-        #     except:
-        #         pass
+        location = streamlit_geolocation()
+        if location['latitude'] is not None:
+            try:
+                geolocator = Nominatim(user_agent="geoapiExercises")
+                location_ = geolocator.reverse(f"{location['latitude']}, {location['longitude']}")
+                st.session_state['victim_info']['location'] = location
+                st.session_state['victim_info']['location']['details'] = location_.address
+                state_manager.add_message(role="assistant", content=f"longitude, latitude, details: {location['longitude']}, {location['latitude'], location_.address}")
+                #st.warning(f"User location: {location}")
+            except:
+                try:
+                    state_manager.add_message(role="assistant", content=f"User location: {location}")
+                    st.session_state['victim_info']['location'] = location
+                except Exception as e:
+                    logger.error(f"Error updating victim info: {e}")
+                    state_manager.add_message(role="assistant", content="Error updating victim info.")
+
         if prompt:
             state_manager.add_message(role="user", content=prompt)
             try:
                 # LLM inference
                 response = generate_response(prompt)
-                if response == '':
-                    response = "I'm sorry, I did not understand. Can you repeat please?"
             except Exception as e:
                 logger.error(f"Error generating response: {e}")
                 # try to call function with args manually 
                 response = generate_manual_response(prompt)
-                if response == '':
-                    response = "I'm sorry, I did not understand. Can you rephrase please?"
             state_manager.add_message("assistant", response)
             process_json_response(response)
         state_manager.display_messages()
@@ -251,6 +256,5 @@ def process_json_response(response: str):
                 upload_victim_info(update_victim_json(new_infos=response), schema)
             except:
                 st.warning("Error updating victim info.")
-
+            
 main()
-

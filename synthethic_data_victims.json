@@ -1,0 +1,815 @@
+[
+  {
+    "victim_info": {
+      "id": "victim-1",
+      "emergency_status": "critical",
+      "location": {
+        "lat": 37.7749,
+        "lon": -122.4194,
+        "details": "Golden Gate Park",
+        "nearest_landmark": "Japanese Tea Garden"
+      },
+      "personal_info": {
+        "name": "John Doe",
+        "age": 35,
+        "gender": "male",
+        "language": "English",
+        "physical_description": "6'2, 180 lbs, brown hair, blue eyes"
+      },
+      "medical_info": {
+        "injuries": ["broken leg", "head trauma"],
+        "pain_level": 8,
+        "medical_conditions": ["diabetes", "high blood pressure"],
+        "medications": ["insulin", "blood pressure medication"],
+        "allergies": ["penicillin"],
+        "blood_type": "O+"
+      },
+      "situation": {
+        "disaster_type": "earthquake",
+        "immediate_needs": ["medical attention", "food and water"],
+        "trapped": true,
+        "mobility": "limited",
+        "nearby_hazards": ["downed power lines", "gas leaks"]
+      },
+      "contact_info": {
+        "phone": "415-123-4567",
+        "email": "johndoe@example.com",
+        "emergency_contact": {
+          "name": "Jane Doe",
+          "relationship": "spouse",
+          "phone": "415-901-2345"
+        }
+      },
+      "resources": {
+        "food_status": "low",
+        "water_status": "low",
+        "shelter_status": "available",
+        "communication_devices": ["cell phone", "two-way radio"]
+      },
+      "rescue_info": {
+        "last_contact": "2023-02-15 14:30:00",
+        "rescue_team_eta": "30 minutes",
+        "special_rescue_needs": "medical equipment"
+      },
+      "environmental_data": {
+        "temperature": 55,
+        "humidity": 60,
+        "air_quality": "good",
+        "weather": "partly cloudy"
+      },
+      "device_data": {
+        "battery_level": 80,
+        "network_status": "connected"
+      },
+      "social_info": {
+        "group_size": 5,
+        "dependents": 2,
+        "nearby_victims_count": 10,
+        "can_communicate_verbally": true
+      },
+      "psychological_status": {
+        "stress_level": "high",
+        "special_needs": "trauma counseling"
+      }
+    }
+  },
+  {
+    "victim_info": {
+      "id": "victim-2",
+      "emergency_status": "stable",
+      "location": {
+        "lat": 34.0522,
+        "lon": -118.2437,
+        "details": "Downtown Los Angeles",
+        "nearest_landmark": "Staples Center"
+      },
+      "personal_info": {
+        "name": "Jane Smith",
+        "age": 28,
+        "gender": "female",
+        "language": "English",
+        "physical_description": "5'5, 130 lbs, blonde hair, green eyes"
+      },
+      "medical_info": {
+        "injuries": ["minor cuts and bruises"],
+        "pain_level": 3,
+        "medical_conditions": ["asthma"],
+        "medications": ["inhaler"],
+        "allergies": ["none"],
+        "blood_type": "A+"
+      },
+      "situation": {
+        "disaster_type": "wildfire",
+        "immediate_needs": ["water", "shelter"],
+        "trapped": false,
+        "mobility": "mobile",
+        "nearby_hazards": ["smoke inhalation", "falling debris"]
+      },
+      "contact_info": {
+        "phone": "213-555-1212",
+        "email": "janesmith@example.com",
+        "emergency_contact": {
+          "name": "Peter Smith",
+          "relationship": "brother",
+          "phone": "213-987-6543"
+        }
+      },
+      "resources": {
+        "food_status": "moderate",
+        "water_status": "low",
+        "shelter_status": "needed",
+        "communication_devices": ["cell phone"]
+      },
+      "rescue_info": {
+        "last_contact": "2023-02-15 15:00:00",
+        "rescue_team_eta": "1 hour",
+        "special_rescue_needs": "none"
+      },
+      "environmental_data": {
+        "temperature": 85,
+        "humidity": 30,
+        "air_quality": "poor",
+        "weather": "sunny"
+      },
+      "device_data": {
+        "battery_level": 50,
+        "network_status": "intermittent"
+      },
+      "social_info": {
+        "group_size": 2,
+        "dependents": 0,
+        "nearby_victims_count": 5,
+        "can_communicate_verbally": true
+      },
+      "psychological_status": {
+        "stress_level": "moderate",
+        "special_needs": "none"
+      }
+    }
+  },
+  {
+    "victim_info": {
+      "id": "victim-3",
+      "emergency_status": "critical",
+      "location": {
+        "lat": 29.7604,
+        "lon": -95.3698,
+        "details": "Downtown Houston",
+        "nearest_landmark": "Toyota Center"
+      },
+      "personal_info": {
+        "name": "David Lee",
+        "age": 60,
+        "gender": "male",
+        "language": "English",
+        "physical_description": "5'10, 170 lbs, gray hair, brown eyes"
+      },
+      "medical_info": {
+        "injuries": ["chest pain", "difficulty breathing"],
+        "pain_level": 9,
+        "medical_conditions": ["heart condition"],
+        "medications": ["nitroglycerin"],
+        "allergies": ["sulfa drugs"],
+        "blood_type": "B+"
+      },
+      "situation": {
+        "disaster_type": "hurricane",
+        "immediate_needs": ["medical attention", "oxygen"],
+        "trapped": false,
+        "mobility": "immobile",
+        "nearby_hazards": ["flooding", "high winds"]
+      },
+      "contact_info": {
+        "phone": "713-867-5309",
+        "email": "davidlee@example.com",
+        "emergency_contact": {
+          "name": "Susan Lee",
+          "relationship": "wife",
+          "phone": "713-222-3333"
+        }
+      },
+      "resources": {
+        "food_status": "low",
+        "water_status": "low",
+        "shelter_status": "needed",
+        "communication_devices": ["cell phone"]
+      },
+      "rescue_info": {
+        "last_contact": "2023-02-15 15:30:00",
+        "rescue_team_eta": "unknown",
+        "special_rescue_needs": "medical evacuation"
+      },
+      "environmental_data": {
+        "temperature": 75,
+        "humidity": 90,
+        "air_quality": "fair",
+        "weather": "heavy rain"
+      },
+      "device_data": {
+        "battery_level": 20,
+        "network_status": "disconnected"
+      },
+      "social_info": {
+        "group_size": 1,
+        "dependents": 0,
+        "nearby_victims_count": "unknown",
+        "can_communicate_verbally": true
+      },
+      "psychological_status": {
+        "stress_level": "high",
+        "special_needs": "anxiety medication"
+      }
+    }
+  },
+  {
+    "victim_info": {
+      "id": "victim-4",
+      "emergency_status": "stable",
+      "location": {
+        "lat": 40.7128,
+        "lon": -74.0060,
+        "details": "Times Square, New York City",
+        "nearest_landmark": "Broadway"
+      },
+      "personal_info": {
+        "name": "Maria Garcia",
+        "age": 45,
+        "gender": "female",
+        "language": "Spanish",
+        "physical_description": "5'4, 140 lbs, black hair, brown eyes"
+      },
+      "medical_info": {
+        "injuries": ["sprained ankle"],
+        "pain_level": 5,
+        "medical_conditions": ["none"],
+        "medications": ["none"],
+        "allergies": ["none"],
+        "blood_type": "AB+"
+      },
+      "situation": {
+        "disaster_type": "terrorist attack",
+        "immediate_needs": ["shelter", "first aid"],
+        "trapped": false,
+        "mobility": "limited",
+        "nearby_hazards": ["debris", "potential secondary attacks"]
+      },
+      "contact_info": {
+        "phone": "917-555-0101",
+        "email": "mariagarcia@example.com",
+        "emergency_contact": {
+          "name": "Carlos Garcia",
+          "relationship": "husband",
+          "phone": "917-111-2222"
+        }
+      },
+      "resources": {
+        "food_status": "moderate",
+        "water_status": "moderate",
+        "shelter_status": "needed",
+        "communication_devices": ["cell phone"]
+      },
+      "rescue_info": {
+        "last_contact": "2023-02-15 16:00:00",
+        "rescue_team_eta": "20 minutes",
+        "special_rescue_needs": "none"
+      },
+      "environmental_data": {
+        "temperature": 60,
+        "humidity": 50,
+        "air_quality": "good",
+        "weather": "clear"
+      },
+      "device_data": {
+        "battery_level": 70,
+        "network_status": "connected"
+      },
+      "social_info": {
+        "group_size": 3,
+        "dependents": 1,
+        "nearby_victims_count": 20,
+        "can_communicate_verbally": true
+      },
+      "psychological_status": {
+        "stress_level": "high",
+        "special_needs": "emotional support"
+      }
+    }
+  },
+  {
+    "victim_info": {
+      "id": "victim-5",
+      "emergency_status": "critical",
+      "location": {
+        "lat": 39.9526,
+        "lon": -75.1652,
+        "details": "Center City, Philadelphia",
+        "nearest_landmark": "City Hall"
+      },
+      "personal_info": {
+        "name": "Michael Brown",
+        "age": 50,
+        "gender": "male",
+        "language": "English",
+        "physical_description": "6'0, 190 lbs, brown hair, brown eyes"
+      },
+      "medical_info": {
+        "injuries": ["severe burns"],
+        "pain_level": 10,
+        "medical_conditions": ["none"],
+        "medications": ["none"],
+        "allergies": ["peanuts"],
+        "blood_type": "O-"
+      },
+      "situation": {
+        "disaster_type": "building collapse",
+        "immediate_needs": ["medical attention", "pain relief"],
+        "trapped": true,
+        "mobility": "immobile",
+        "nearby_hazards": ["unstable structure", "dust inhalation"]
+      },
+      "contact_info": {
+        "phone": "215-555-1234",
+        "email": "michaelbrown@example.com",
+        "emergency_contact": {
+          "name": "Lisa Brown",
+          "relationship": "sister",
+          "phone": "215-999-8888"
+        }
+      },
+      "resources": {
+        "food_status": "none",
+        "water_status": "none",
+        "shelter_status": "none",
+        "communication_devices": ["cell phone"]
+      },
+      "rescue_info": {
+        "last_contact": "2023-02-15 16:30:00",
+        "rescue_team_eta": "45 minutes",
+        "special_rescue_needs": "specialized rescue equipment"
+      },
+      "environmental_data": {
+        "temperature": 65,
+        "humidity": 40,
+        "air_quality": "poor",
+        "weather": "overcast"
+      },
+      "device_data": {
+        "battery_level": 40,
+        "network_status": "weak"
+      },
+      "social_info": {
+        "group_size": 1,
+        "dependents": 0,
+        "nearby_victims_count": "unknown",
+        "can_communicate_verbally": true
+      },
+      "psychological_status": {
+        "stress_level": "extreme",
+        "special_needs": "immediate medical attention"
+      }
+    }
+  },
+  {
+    "victim_info": {
+      "id": "victim-6",
+      "emergency_status": "stable",
+      "location": {
+        "lat": 41.8781,
+        "lon": -87.6298,
+        "details": "Downtown Chicago",
+        "nearest_landmark": "Willis Tower"
+      },
+      "personal_info": {
+        "name": "Jennifer Davis",
+        "age": 30,
+        "gender": "female",
+        "language": "English",
+        "physical_description": "5'7, 150 lbs, blonde hair, blue eyes"
+      },
+      "medical_info": {
+        "injuries": ["minor cuts and bruises"],
+        "pain_level": 2,
+        "medical_conditions": ["none"],
+        "medications": ["none"],
+        "allergies": ["none"],
+        "blood_type": "A-"
+      },
+      "situation": {
+        "disaster_type": "blizzard",
+        "immediate_needs": ["shelter", "warm clothing"],
+        "trapped": false,
+        "mobility": "mobile",
+        "nearby_hazards": ["hypothermia", "frostbite"]
+      },
+      "contact_info": {
+        "phone": "312-555-5555",
+        "email": "jenniferdavis@example.com",
+        "emergency_contact": {
+          "name": "Robert Davis",
+          "relationship": "father",
+          "phone": "312-123-4567"
+        }
+      },
+      "resources": {
+        "food_status": "low",
+        "water_status": "low",
+        "shelter_status": "needed",
+        "communication_devices": ["cell phone"]
+      },
+      "rescue_info": {
+        "last_contact": "2023-02-15 17:00:00",
+        "rescue_team_eta": "30 minutes",
+        "special_rescue_needs": "none"
+      },
+      "environmental_data": {
+        "temperature": 10,
+        "humidity": 80,
+        "air_quality": "good",
+        "weather": "heavy snow"
+      },
+      "device_data": {
+        "battery_level": 60,
+        "network_status": "connected"
+      },
+      "social_info": {
+        "group_size": 2,
+        "dependents": 0,
+        "nearby_victims_count": 10,
+        "can_communicate_verbally": true
+      },
+      "psychological_status": {
+        "stress_level": "moderate",
+        "special_needs": "none"
+      }
+    }
+  },
+  {
+    "victim_info": {
+      "id": "victim-7",
+      "emergency_status": "critical",
+      "location": {
+        "lat": 32.7157,
+        "lon": -117.1611,
+        "details": "Downtown San Diego",
+        "nearest_landmark": "Gaslamp Quarter"
+      },
+      "personal_info": {
+        "name": "Richard Wilson",
+        "age": 70,
+        "gender": "male",
+        "language": "English",
+        "physical_description": "5'11, 180 lbs, gray hair, blue eyes"
+      },
+      "medical_info": {
+        "injuries": ["broken hip", "internal bleeding"],
+        "pain_level": 9,
+        "medical_conditions": ["diabetes", "heart condition"],
+        "medications": ["insulin", "heart medication"],
+        "allergies": ["penicillin"],
+        "blood_type": "B-"
+      },
+      "situation": {
+        "disaster_type": "earthquake",
+        "immediate_needs": ["medical attention", "surgery"],
+        "trapped": true,
+        "mobility": "immobile",
+        "nearby_hazards": ["unstable structure", "gas leaks"]
+      },
+      "contact_info": {
+        "phone": "619-555-8765",
+        "email": "richardwilson@example.com",
+        "emergency_contact": {
+          "name": "Mary Wilson",
+          "relationship": "wife",
+          "phone": "619-432-1098"
+        }
+      },
+      "resources": {
+        "food_status": "none",
+        "water_status": "none",
+        "shelter_status": "none",
+        "communication_devices": ["cell phone"]
+      },
+      "rescue_info": {
+        "last_contact": "2023-02-15 17:30:00",
+        "rescue_team_eta": "1 hour",
+        "special_rescue_needs": "medical evacuation, specialized rescue equipment"
+      },
+      "environmental_data": {
+        "temperature": 60,
+        "humidity": 50,
+        "air_quality": "good",
+        "weather": "clear"
+      },
+      "device_data": {
+        "battery_level": 30,
+        "network_status": "weak"
+      },
+      "social_info": {
+        "group_size": 1,
+        "dependents": 0,
+        "nearby_victims_count": "unknown",
+        "can_communicate_verbally": true
+      },
+      "psychological_status": {
+        "stress_level": "high",
+        "special_needs": "pain management, emotional support"
+      }
+    }
+  },
+  {
+    "victim_info": {
+      "id": "victim-8",
+      "emergency_status": "stable",
+      "location": {
+        "lat": 33.4484,
+        "lon": -112.0740,
+        "details": "Downtown Phoenix",
+        "nearest_landmark": "Chase Field"
+      },
+      "personal_info": {
+        "name": "Linda Moore",
+        "age": 40,
+        "gender": "female",
+        "language": "English",
+        "physical_description": "5'6, 140 lbs, brown hair, brown eyes"
+      },
+      "medical_info": {
+        "injuries": ["dehydration"],
+        "pain_level": 4,
+        "medical_conditions": ["none"],
+        "medications": ["none"],
+        "allergies": ["none"],
+        "blood_type": "O+"
+      },
+      "situation": {
+        "disaster_type": "heat wave",
+        "immediate_needs": ["water", "shelter"],
+        "trapped": false,
+        "mobility": "mobile",
+        "nearby_hazards": ["heat exhaustion", "heat stroke"]
+      },
+      "contact_info": {
+        "phone": "602-555-1212",
+        "email": "lindamoore@example.com",
+        "emergency_contact": {
+          "name": "James Moore",
+          "relationship": "husband",
+          "phone": "602-987-6543"
+        }
+      },
+      "resources": {
+        "food_status": "low",
+        "water_status": "low",
+        "shelter_status": "needed",
+        "communication_devices": ["cell phone"]
+      },
+      "rescue_info": {
+        "last_contact": "2023-02-15 18:00:00",
+        "rescue_team_eta": "30 minutes",
+        "special_rescue_needs": "none"
+      },
+      "environmental_data": {
+        "temperature": 110,
+        "humidity": 10,
+        "air_quality": "good",
+        "weather": "sunny"
+      },
+      "device_data": {
+        "battery_level": 50,
+        "network_status": "connected"
+      },
+      "social_info": {
+        "group_size": 2,
+        "dependents": 1,
+        "nearby_victims_count": 5,
+        "can_communicate_verbally": true
+      },
+      "psychological_status": {
+        "stress_level": "moderate",
+        "special_needs": "none"
+      }
+    }
+  },
+  {
+    "victim_info": {
+      "id": "victim-9",
+      "emergency_status": "critical",
+      "location": {
+        "lat": 34.0522,
+        "lon": -118.2437,
+        "details": "Hollywood, Los Angeles",
+        "nearest_landmark": "Hollywood Walk of Fame"
+      },
+      "personal_info": {
+        "name": "Karen Taylor",
+        "age": 25,
+        "gender": "female",
+        "language": "English",
+        "physical_description": "5'8, 130 lbs, blonde hair, blue eyes"
+      },
+      "medical_info": {
+        "injuries": ["gunshot wound"],
+        "pain_level": 10,
+        "medical_conditions": ["none"],
+        "medications": ["none"],
+        "allergies": ["none"],
+        "blood_type": "AB-"
+      },
+      "situation": {
+        "disaster_type": "mass shooting",
+        "immediate_needs": ["medical attention", "surgery"],
+        "trapped": false,
+        "mobility": "immobile",
+        "nearby_hazards": ["active shooter", "blood loss"]
+      },
+      "contact_info": {
+        "phone": "323-555-0000",
+        "email": "karentaylor@example.com",
+        "emergency_contact": {
+          "name": "David Taylor",
+          "relationship": "brother",
+          "phone": "323-111-2222"
+        }
+      },
+      "resources": {
+        "food_status": "none",
+        "water_status": "none",
+        "shelter_status": "none",
+        "communication_devices": ["cell phone"]
+      },
+      "rescue_info": {
+        "last_contact": "2023-02-15 18:30:00",
+        "rescue_team_eta": "unknown",
+        "special_rescue_needs": "medical evacuation, police escort"
+      },
+      "environmental_data": {
+        "temperature": 70,
+        "humidity": 60,
+        "air_quality": "good",
+        "weather": "clear"
+      },
+      "device_data": {
+        "battery_level": 20,
+        "network_status": "intermittent"
+      },
+      "social_info": {
+        "group_size": 1,
+        "dependents": 0,
+        "nearby_victims_count": "unknown",
+        "can_communicate_verbally": true
+      },
+      "psychological_status": {
+        "stress_level": "extreme",
+        "special_needs": "trauma counseling, pain management"
+      }
+    }
+  },
+  {
+    "victim_info": {
+      "id": "victim-10",
+      "emergency_status": "stable",
+      "location": {
+        "lat": 25.7617,
+        "lon": -80.1918,
+        "details": "Downtown Miami",
+        "nearest_landmark": "American Airlines Arena"
+      },
+      "personal_info": {
+        "name": "Charles Anderson",
+        "age": 55,
+        "gender": "male",
+        "language": "English",
+        "physical_description": "6'0, 170 lbs, gray hair, brown eyes"
+      },
+      "medical_info": {
+        "injuries": ["minor cuts and bruises"],
+        "pain_level": 3,
+        "medical_conditions": ["high blood pressure"],
+        "medications": ["blood pressure medication"],
+        "allergies": ["none"],
+        "blood_type": "A+"
+      },
+      "situation": {
+        "disaster_type": "hurricane",
+        "immediate_needs": ["shelter", "food and water"],
+        "trapped": false,
+        "mobility": "mobile",
+        "nearby_hazards": ["flooding", "high winds"]
+      },
+      "contact_info": {
+        "phone": "305-555-1234",
+        "email": "charlesanderson@example.com",
+        "emergency_contact": {
+          "name": "Patricia Anderson",
+          "relationship": "wife",
+          "phone": "305-987-6543"
+        }
+      },
+      "resources": {
+        "food_status": "low",
+        "water_status": "low",
+        "shelter_status": "needed",
+        "communication_devices": ["cell phone"]
+      },
+      "rescue_info": {
+        "last_contact": "2023-02-15 19:00:00",
+        "rescue_team_eta": "1 hour",
+        "special_rescue_needs": "none"
+      },
+      "environmental_data": {
+        "temperature": 80,
+        "humidity": 90,
+        "air_quality": "fair",
+        "weather": "heavy rain"
+      },
+      "device_data": {
+        "battery_level": 40,
+        "network_status": "intermittent"
+      },
+      "social_info": {
+        "group_size": 2,
+        "dependents": 0,
+        "nearby_victims_count": 10,
+        "can_communicate_verbally": true
+      },
+      "psychological_status": {
+        "stress_level": "moderate",
+        "special_needs": "none"
+      }
+    }
+  },
+  {
+    "victim_info": {
+      "id": "victim-11",
+      "emergency_status": "critical",
+      "location": {
+        "lat": 47.6062,
+        "lon": -122.3321,
+        "details": "Downtown Seattle",
+        "nearest_landmark": "Space Needle"
+      },
+      "personal_info": {
+        "name": "Susan Thomas",
+        "age": 60,
+        "gender": "female",
+        "language": "English",
+        "physical_description": "5'5, 140 lbs, gray hair, blue eyes"
+      },
+      "medical_info": {
+        "injuries": ["broken arm", "head injury"],
+        "pain_level": 8,
+        "medical_conditions": ["diabetes"],
+        "medications": ["insulin"],
+        "allergies": ["penicillin"],
+        "blood_type": "B+"
+      },
+      "situation": {
+        "disaster_type": "earthquake",
+        "immediate_needs": ["medical attention", "shelter"],
+        "trapped": true,
+        "mobility": "immobile",
+        "nearby_hazards": ["unstable structure", "debris"]
+      },
+      "contact_info": {
+        "phone": "206-555-1234",
+        "email": "susanthomas@example.com",
+        "emergency_contact": {
+          "name": "Robert Thomas",
+          "relationship": "husband",
+          "phone": "206-987-6543"
+        }
+      },
+      "resources": {
+        "food_status": "none",
+        "water_status": "none",
+        "shelter_status": "none",
+        "communication_devices": ["cell phone"]
+      },
+      "rescue_info": {
+        "last_contact": "2023-02-15 19:30:00",
+        "rescue_team_eta": "45 minutes",
+        "special_rescue_needs": "medical evacuation, specialized rescue equipment"
+      },
+      "environmental_data": {
+        "temperature": 50,
+        "humidity": 70,
+        "air_quality": "good",
+        "weather": "rainy"
+      },
+      "device_data": {
+        "battery_level": 30,
+        "network_status": "weak"
+      },
+      "social_info": {
+        "group_size": 1,
+        "dependents": 0,
+        "nearby_victims_count": "unknown",
+        "can_communicate_verbally": true
+      },
+      "psychological_status": {
+        "stress_level": "high",
+        "special_needs": "pain management, emotional support"
+      }
+    }
+  }]
