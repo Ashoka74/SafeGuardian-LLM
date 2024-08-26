@@ -426,7 +426,7 @@ def color_risk(val):
         # leave blank
         color = 'white'
 
-my_dataset = responses_to_df(ref.get(), 'victim_data')
+my_dataset = responses_to_df(ref.get(), 'victim_info')
 
 
 risk_map = {
@@ -470,7 +470,7 @@ def color_rows(row):
     elif score == 1:
         return [f'background-color: rgba(0, 255, 0, 0.3)'] * len(row)  # Green with 30% opacity
     else:
-        return [f'background-color: rgba(0, 0, 0, 1)'] * len(row)  # White (fully opaque)
+        return [f'background-color: rgba(0, 0, 0, 0)'] * len(row)  # White (fully opaque)
 
 # Apply the styling function to the dataframe
 
@@ -512,31 +512,34 @@ if my_dataset is not None :
         data=parser, name="victims_config"
         )
     
-    if st.toggle('Show Optimized Paths'):
-        # Get the coordinates of the rescue centers
+    left__, mid__, right__  = st.columns([.3, .3, .3])
+    with left__:
+        if st.toggle('Show Optimized Paths'):
+            rescue_centers = rescue[['longitude', 'latitude']].values.tolist()[0]
 
-        # # Plan the rescue route
-        # weighted_route = path_optimizer.get_osrm_trip(
-        #     coordinates=synth_data[['longitude', 'latitude']].values.tolist(),
-        #     weights=synth_data['risk_nb'].apply(path_optimizer.emergency_to_weight).tolist(),
-        #     rescue_center=rescue_centers[0]
-        # )
+            # Plan the unweighted route
+            unweighted_route = path_optimizer.get_osrm_trip(
+                coordinates=synth_data[['longitude', 'latitude']].values.tolist(),
+                weights=None,
+                rescue_center=rescue_centers
+            )
+            # Add the unweighted route to the map
+            map_1.add_data(unweighted_route, name='optimal_path')
+            base_config['config']['visState']['layers'].extend([layer for layer in itinerary_config['config']['visState']['layers']])
 
-        # # Add the weighted route to the map
-        # map_1.add_data(weighted_route, name='weighted_route')
-
-        rescue_centers = rescue[['longitude', 'latitude']].values.tolist()[0]
-
-        # Plan the unweighted route
-        unweighted_route = path_optimizer.get_osrm_trip(
-            coordinates=synth_data[['longitude', 'latitude']].values.tolist(),
-            weights=None,
-            rescue_center=rescue_centers
-        )
-        # Add the unweighted route to the map
-        map_1.add_data(unweighted_route, name='optimal_path')
-        base_config['config']['visState']['layers'].extend([layer for layer in itinerary_config['config']['visState']['layers']])
-
+    with mid__:
+        if st.toggle('Dark Mode'):
+            base_config['config']['mapStyle'] = {
+                "styleType": "dark"
+            }
+            # change icon color to white
+            base_config['config']['visState']['layers'][0]['config']['color'] = [255, 255, 255]
+        else:
+            base_config['config']['mapStyle'] = {
+                "styleType": "light"
+            }
+            # change icon color to black
+            base_config['config']['visState']['layers'][0]['config']['color'] = [0, 0, 0]
 
     
     base_config['config']['visState']['layers'].extend([layer for layer in victims_config['config']['visState']['layers']])

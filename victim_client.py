@@ -1,4 +1,4 @@
-from victim_tools.llm_utils import GeminiConfig, schema#, tool_config_from_mode
+from victim_tools.llm_utils import GeminiConfig, schema, victim_info_schema# tool_config_from_mode
 from victim_tools.geolocation_data import geolocation_data
 from victim_tools.rescue_data import get_rescue_data
 from victim_tools.vital_data import update_victim_json
@@ -66,8 +66,8 @@ if "victim_number" not in st.session_state:
 # Function calling definitions
 function_calling = {
     'get_rescue_data': get_rescue_data,
-    'get_location': provide_user_location,
-    #'get_location_from_wifi': get_location_from_wifi
+    #'get_location': provide_user_location,
+    'get_victim_location': get_location_from_wifi,
     # Add more functions here!
 }
 
@@ -127,7 +127,7 @@ def chat_container(height: int):
 
 
 def display_victim_info():
-    st.write("Victim Info:\n\n", st.session_state.victim_info)
+    st.write("Parsed Informations:\n\n", st.session_state.victim_info)
     # send data to FireBase
     try:
         update_(st.session_state['victim_number'], st.session_state['victim_info'])
@@ -182,6 +182,31 @@ def extract_function_calls(response) -> List[Dict[str, Any]]:
 
 
 
+def process_and_upload_victim_info(response: str, schema: Dict[str, Any]):
+    try:
+        play_audio(response)
+    except Exception as e:
+        logger.error(f"Error playing audio: {e}")
+
+    if '```json' in response:
+        json_str = response.split('```json')[1].split('```')[0]
+        try:
+            json_data = json.loads(json_str)
+            if 'message' in json_data and len(json_data) == 1:
+                return json_data['message']
+            else:
+                # Consider adding JSON validation here
+                st.session_state['victim_info'] = json_data
+                st.session_state['victim_info']['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                logger.info("Victim info updated successfully")
+                return json_data
+        except json.JSONDecodeError as e:
+            logger.error(f"Error decoding JSON: {e}")
+            st.warning("Invalid JSON format in response.")
+    else:
+        logger.info("No JSON block found in response.")
+        return None  # Explicitly return None
+
 def process_json_response(response: str):
     # check if response is JSON
     try:
@@ -196,5 +221,6 @@ def process_json_response(response: str):
                 upload_victim_info(update_victim_json(new_infos=response), schema)
             except:
                 st.warning("Error updating victim info.")
+            
             
 main()

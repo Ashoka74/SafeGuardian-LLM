@@ -11,7 +11,7 @@
             "dataId": "rescue_departments",
             "label": "Rescue Departments",
             "color": [
-              210,
+              0,
               0,
               0
             ],
@@ -28,9 +28,9 @@
             },
             "isVisible": true,
             "visConfig": {
-              "radius": 23.3,
+              "radius": 35.3,
               "fixedRadius": false,
-              "opacity": 0.8,
+              "opacity": 0.5,
               "colorRange": {
                 "name": "Global Warming",
                 "type": "sequential",
@@ -106,7 +106,7 @@
       "isSplit": false
     },
     "mapStyle": {
-      "styleType": "dark",
+      "styleType": "light",
       "topLayerGroups": {},
       "visibleLayerGroups": {
         "label": true,

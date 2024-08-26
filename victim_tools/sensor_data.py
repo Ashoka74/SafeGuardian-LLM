@@ -19,8 +19,6 @@ from typing import List, Tuple, Optional, Dict, Any
 
 from victim_tools.llm_utils import GeminiConfig
 
-
-gemini_api = 'AIzaSyAEALAXiaE1HcD8qcN1duY4OtmUDfYqquk'
 model_path = 'models/gemini-1.5-flash'
 response_type = 'application/json'
 

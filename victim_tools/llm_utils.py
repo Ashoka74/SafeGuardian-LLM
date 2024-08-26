@@ -1,6 +1,6 @@
 
 import streamlit as st
-#from google.generativeai.types import content_types #uncompatible version with streamlit
+from google.generativeai.types import content_types #uncompatible version with streamlit
 from collections.abc import Iterable
 import time
 from sodapy import Socrata
@@ -55,82 +55,12 @@ class GeminiConfig:
         ]
 
 
-# def tool_config_from_mode(mode: str, fns: Iterable[str] = ()):
-#     """Create a tool config with the specified function calling mode."""
-#     return content_types.to_tool_config(
-#         {"function_calling_config": {"mode": mode, "allowed_function_names": fns}}
-#     )
+def tool_config_from_mode(mode: str, fns: Iterable[str] = ()):
+    """Create a tool config with the specified function calling mode."""
+    return content_types.to_tool_config(
+        {"function_calling_config": {"mode": mode, "allowed_function_names": fns}}
+    )
 
-
-victim_info_schema = genai.protos.Schema(
-    type=genai.protos.Type.OBJECT,
-    properties={
-        'personal_info': genai.protos.Schema(
-            type=genai.protos.Type.OBJECT,
-            properties={
-                'name': genai.protos.Schema(type=genai.protos.Type.STRING),
-                'age': genai.protos.Schema(type=genai.protos.Type.STRING),
-                'gender': genai.protos.Schema(type=genai.protos.Type.STRING),
-                'location': genai.protos.Schema(type=genai.protos.Type.STRING),
-            }
-        ),
-        'medical_info': genai.protos.Schema(
-            type=genai.protos.Type.OBJECT,
-            properties={
-                'injuries': genai.protos.Schema(type=genai.protos.Type.ARRAY, items=genai.protos.Schema(type=genai.protos.Type.STRING)),
-                'medical_conditions': genai.protos.Schema(type=genai.protos.Type.ARRAY, items=genai.protos.Schema(type=genai.protos.Type.STRING)),
-                'medications': genai.protos.Schema(type=genai.protos.Type.ARRAY, items=genai.protos.Schema(type=genai.protos.Type.STRING)),
-            }
-        ),
-        'situation': genai.protos.Schema(
-            type=genai.protos.Type.OBJECT,
-            properties={
-                'disaster_type': genai.protos.Schema(type=genai.protos.Type.STRING),
-                'immediate_needs': genai.protos.Schema(type=genai.protos.Type.ARRAY, items=genai.protos.Schema(type=genai.protos.Type.STRING)),
-                'safety_status': genai.protos.Schema(type=genai.protos.Type.STRING),
-            }
-        ),
-        'contact_info': genai.protos.Schema(
-            type=genai.protos.Type.OBJECT,
-            properties={
-                'phone': genai.protos.Schema(type=genai.protos.Type.STRING),
-                'emergency_contact': genai.protos.Schema(type=genai.protos.Type.STRING),
-            }
-        ),
-        'resources': genai.protos.Schema(
-            type=genai.protos.Type.OBJECT,
-            properties={
-                'food_water': genai.protos.Schema(type=genai.protos.Type.STRING),
-                'shelter': genai.protos.Schema(type=genai.protos.Type.STRING),
-                'communication_devices': genai.protos.Schema(type=genai.protos.Type.ARRAY, items=genai.protos.Schema(type=genai.protos.Type.STRING)),
-            }
-        ),
-    }
-)
-
-parameters_schema = genai.protos.Schema(
-    type=genai.protos.Type.OBJECT,
-    properties={
-        'victim_info': genai.protos.Schema(
-            type=genai.protos.Type.OBJECT,
-            properties={
-                'personal_info': victim_info_schema.properties['personal_info'],
-                'medical_info': victim_info_schema.properties['medical_info'],
-                'situation': victim_info_schema.properties['situation'],
-                'contact_info': victim_info_schema.properties['contact_info'],
-                'resources': victim_info_schema.properties['resources'],
-            }
-        )
-    }
-)
-
-add_victim_info = genai.protos.FunctionDeclaration(
-    name="add_victim_info",
-    description=textwrap.dedent("""
-        Adds victim information to the database.
-    """),
-    parameters=parameters_schema
-)
 
 
 # def get_ip():
@@ -252,13 +182,13 @@ def fix_json(json_string):
 schema = {
   "type": "object",
   "properties": {
-    "victim_data": {
+    "victim_info": {
       "type": "object",
       "properties": {
         "id": {"type": "string"},
         "emergency_status": {
                 "type": "string",
-                "enum": ["critical", "very_urgent", "urgent", "stable", ""]
+                "enum": ["critical", "very_urgent", "urgent", "stable", "unknown"]
                 },       
         "location": {
           "type": "object",
@@ -380,45 +310,255 @@ schema = {
       "required": ["id", "emergency_status", "location", "personal_info", "medical_info", "situation", "contact_info", "resources", "rescue_info", "environmental_data", "device_data", "social_info", "psychological_status"]
     }
   },
-  "required": ["victim_data"]
+  "required": ["victim_info"]
 }
 
+
+victim_info_schema = genai.protos.Schema(
+    type=genai.protos.Type.OBJECT,
+    properties={
+        'id': genai.protos.Schema(type=genai.protos.Type.STRING),
+        'emergency_status': genai.protos.Schema(type=genai.protos.Type.STRING),
+        'location': genai.protos.Schema(
+            type=genai.protos.Type.OBJECT,
+            properties={
+                'lat': genai.protos.Schema(type=genai.protos.Type.NUMBER),
+                'lon': genai.protos.Schema(type=genai.protos.Type.NUMBER),
+                'details': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'nearest_landmark': genai.protos.Schema(type=genai.protos.Type.STRING)
+            }
+        ),
+        'personal_info': genai.protos.Schema(
+            type=genai.protos.Type.OBJECT,
+            properties={
+                'name': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'age': genai.protos.Schema(type=genai.protos.Type.INTEGER),
+                'gender': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'language': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'physical_description': genai.protos.Schema(type=genai.protos.Type.STRING)
+            }
+        ),
+        'medical_info': genai.protos.Schema(
+            type=genai.protos.Type.OBJECT,
+            properties={
+                'injuries': genai.protos.Schema(type=genai.protos.Type.ARRAY, items=genai.protos.Schema(type=genai.protos.Type.STRING)),
+                'pain_level': genai.protos.Schema(type=genai.protos.Type.INTEGER),
+                'medical_conditions': genai.protos.Schema(type=genai.protos.Type.ARRAY, items=genai.protos.Schema(type=genai.protos.Type.STRING)),
+                'medications': genai.protos.Schema(type=genai.protos.Type.ARRAY, items=genai.protos.Schema(type=genai.protos.Type.STRING)),
+                'allergies': genai.protos.Schema(type=genai.protos.Type.ARRAY, items=genai.protos.Schema(type=genai.protos.Type.STRING)),
+                'blood_type': genai.protos.Schema(type=genai.protos.Type.STRING)
+            }
+        ),
+        'situation': genai.protos.Schema(
+            type=genai.protos.Type.OBJECT,
+            properties={
+                'disaster_type': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'immediate_needs': genai.protos.Schema(type=genai.protos.Type.ARRAY, items=genai.protos.Schema(type=genai.protos.Type.STRING)),
+                'trapped': genai.protos.Schema(type=genai.protos.Type.BOOLEAN),
+                'mobility': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'nearby_hazards': genai.protos.Schema(type=genai.protos.Type.ARRAY, items=genai.protos.Schema(type=genai.protos.Type.STRING))
+            }
+        ),
+        'contact_info': genai.protos.Schema(
+            type=genai.protos.Type.OBJECT,
+            properties={
+                'phone': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'email': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'emergency_contact': genai.protos.Schema(
+                    type=genai.protos.Type.OBJECT,
+                    properties={
+                        'name': genai.protos.Schema(type=genai.protos.Type.STRING),
+                        'relationship': genai.protos.Schema(type=genai.protos.Type.STRING),
+                        'phone': genai.protos.Schema(type=genai.protos.Type.STRING)
+                    }
+                )
+            }
+        ),
+        'resources': genai.protos.Schema(
+            type=genai.protos.Type.OBJECT,
+            properties={
+                'food_status': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'water_status': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'shelter_status': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'communication_devices': genai.protos.Schema(type=genai.protos.Type.ARRAY, items=genai.protos.Schema(type=genai.protos.Type.STRING))
+            }
+        ),
+        'rescue_info': genai.protos.Schema(
+            type=genai.protos.Type.OBJECT,
+            properties={
+                'last_contact': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'rescue_team_eta': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'special_rescue_needs': genai.protos.Schema(type=genai.protos.Type.STRING)
+            }
+        ),
+        'environmental_data': genai.protos.Schema(
+            type=genai.protos.Type.OBJECT,
+            properties={
+                'temperature': genai.protos.Schema(type=genai.protos.Type.NUMBER),
+                'humidity': genai.protos.Schema(type=genai.protos.Type.NUMBER),
+                'air_quality': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'weather': genai.protos.Schema(type=genai.protos.Type.STRING)
+            }
+        ),
+        'device_data': genai.protos.Schema(
+            type=genai.protos.Type.OBJECT,
+            properties={
+                'battery_level': genai.protos.Schema(type=genai.protos.Type.INTEGER),
+                'network_status': genai.protos.Schema(type=genai.protos.Type.STRING)
+            }
+        ),
+        'social_info': genai.protos.Schema(
+            type=genai.protos.Type.OBJECT,
+            properties={
+                'group_size': genai.protos.Schema(type=genai.protos.Type.INTEGER),
+                'dependents': genai.protos.Schema(type=genai.protos.Type.INTEGER),
+                'nearby_victims_count': genai.protos.Schema(type=genai.protos.Type.INTEGER),
+                'can_communicate_verbally': genai.protos.Schema(type=genai.protos.Type.BOOLEAN)
+            }
+        ),
+        'psychological_status': genai.protos.Schema(
+            type=genai.protos.Type.OBJECT,
+            properties={
+                'stress_level': genai.protos.Schema(type=genai.protos.Type.STRING),
+                'special_needs': genai.protos.Schema(type=genai.protos.Type.STRING)
+            }
+        )
+    }
+)
+
+parameters_schema = genai.protos.Schema(
+    type=genai.protos.Type.OBJECT,
+    properties={
+        'victim_info': victim_info_schema
+    }
+)
+
+add_victim_info = genai.protos.FunctionDeclaration(
+    name="add_victim_info",
+    description=textwrap.dedent("""
+        Adds victim information to the database.
+    """),
+    parameters=parameters_schema
+)
 
 
 import jsonschema
 from jsonschema import validate, Draft7Validator
 
+from jsonschema import Draft7Validator
+from typing import Any, Dict, List, Union
 
-def fix_json_schema(instance, schema):
-    """Attempts to fix the JSON based on the schema."""
+
+def fix_json_schema(instance: Dict[str, Any], schema: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Attempts to fix the JSON based on the schema.
+    
+    Args:
+        instance (Dict[str, Any]): The JSON instance to fix.
+        schema (Dict[str, Any]): The JSON schema to validate against.
+    
+    Returns:
+        Dict[str, Any]: The fixed JSON instance.
+    """
     validator = Draft7Validator(schema)
-    errors = list(validator.iter_errors(instance))
+    errors = sorted(validator.iter_errors(instance), key=lambda e: e.path)
+    
     for error in errors:
-        # Handle specific validation errors and attempt to fix them
+        path = list(error.path)
+        current = instance
+        
+        # Navigate to the correct location in the instance
+        for key in path[:-1]:
+            if key not in current:
+                current[key] = {} if isinstance(current, dict) else []
+            current = current[key]
+        
         if error.validator == 'required':
-            for prop in error.validator_value:
-                if prop not in instance:
-                    instance[prop] = get_default_value(schema['properties'][prop])
-        # Add more error handling and fixing logic as needed
+            if isinstance(current, dict):
+                for prop in error.validator_value:
+                    if prop not in current:
+                        current[prop] = get_default_value(schema['properties'][prop])
+        elif error.validator == 'type':
+            key = path[-1] if path else None
+            if key is not None:
+                current[key] = coerce_type(current[key], error.validator_value)
+        elif error.validator == 'additionalProperties' and not error.validator_value:
+            if isinstance(current, dict):
+                allowed_properties = set(schema.get('properties', {}).keys())
+                for key in list(current.keys()):
+                    if key not in allowed_properties:
+                        del current[key]
+        # Add more error handling cases as needed
 
     return instance
 
 
-def get_default_value(prop_schema):
-    """Returns a default value based on the property schema."""
+def get_default_value(prop_schema: Dict[str, Any]) -> Any:
+    """
+    Returns a default value based on the property schema.
+    
+    Args:
+        prop_schema (Dict[str, Any]): The schema for a specific property.
+    
+    Returns:
+        Any: A default value that matches the schema.
+    """
     if 'default' in prop_schema:
         return prop_schema['default']
-    elif prop_schema['type'] == 'string':
-        return ""
-    elif prop_schema['type'] == 'integer':
-        return 0
-    elif prop_schema['type'] == 'number':
-        return 0.0
-    elif prop_schema['type'] == 'boolean':
-        return False
-    elif prop_schema['type'] == 'array':
-        return []
-    elif prop_schema['type'] == 'object':
-        return {}
+    elif 'type' in prop_schema:
+        return get_type_default(prop_schema['type'])
+    elif 'anyOf' in prop_schema:
+        return get_default_value(prop_schema['anyOf'][0])
+    elif 'oneOf' in prop_schema:
+        return get_default_value(prop_schema['oneOf'][0])
     else:
         return None
+
+def get_type_default(type_: Union[str, List[str]]) -> Any:
+    """
+    Returns a default value for a given type or list of types.
+    
+    Args:
+        type_ (Union[str, List[str]]): The type or list of types.
+    
+    Returns:
+        Any: A default value that matches the type.
+    """
+    if isinstance(type_, list):
+        return get_type_default(type_[0])
+    
+    type_defaults = {
+        'string': '',
+        'integer': 0,
+        'number': 0.0,
+        'boolean': False,
+        'array': [],
+        'object': {}
+    }
+    return type_defaults.get(type_, None)
+
+def coerce_type(value: Any, target_type: str) -> Any:
+    """
+    Attempts to coerce a value to the target type.
+    
+    Args:
+        value (Any): The value to coerce.
+        target_type (str): The desired type.
+    
+    Returns:
+        Any: The coerced value.
+    """
+    if target_type == 'string':
+        return str(value)
+    elif target_type == 'integer':
+        return int(float(value))
+    elif target_type == 'number':
+        return float(value)
+    elif target_type == 'boolean':
+        return bool(value)
+    elif target_type == 'array':
+        return [value] if not isinstance(value, list) else value
+    elif target_type == 'object':
+        return {} if not isinstance(value, dict) else value
+    else:
+        return value
