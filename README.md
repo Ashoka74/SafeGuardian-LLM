@@ -14,9 +14,12 @@
 
 <p><b>SafeGuardianAI</b> is an innovative emergency response platform that harnesses the power of artificial intelligence to provide critical support during catastrophic events. By seamlessly integrating real-time data analysis, offline capabilities, and community-driven support, SafeGuardianAI bridges the gap between individuals, communities, and emergency services, ensuring a more coordinated and effective response to disasters.</p>
 
-<h2>🚀 Key Features</h2>
+https://github.com/user-attachments/assets/d19066d3-7d75-4c2c-9a38-00143029a140
 
-<ul>
+
+
+<h2>🚀 Key Features</h2><ul>
+  
   <li>💬 <strong>AI-Powered Chat Interface</strong>: Interact with GuardianAI for personalized emergency assistance and real-time guidance.</li>
   <li>🎙️ <strong>Multi-Modal Activation</strong>: Trigger emergency mode via text, voice commands, or automatic motion detection for hands-free operation.</li>
   <li>👤 <strong>Smart User Profiles</strong>: Store vital information securely for quick access during emergencies, including medical history and emergency contacts.</li>
@@ -63,7 +66,7 @@
 
 <ol>
   <li>Clone the repository:
-    <pre><code>git clone https://github.com/your-repo/SafeGuardianAI.git
+    <pre><code>git clone https://github.com/Ashoka74/SafeGuardianAI-LLM.git
 cd SafeGuardianAI</code></pre>
   </li>
   <li>Install dependencies:
@@ -77,7 +80,7 @@ GEOLOCATOR_API_KEY=your_geolocator_api_key_here
 FIREBASE_CONFIG=your_firebase_config_json_here</code></pre>
   </li>
   <li>Run the application:
-    <pre><code>streamlit run navigation.py</code></pre>
+    <pre><code>streamlit run app</code></pre>
   </li>
 </ol>
 
@@ -191,7 +194,7 @@ FIREBASE_CONFIG=your_firebase_config_json_here</code></pre>
 
 <h2>📄 License</h2>
 
-<p>This project is licensed under the MIT License - see the <a href="LICENSE.md">LICENSE.md</a> file for details.</p>
+<p>This project is licensed under the GNU General Public License- see the <a href="LICENSE.md">LICENSE.md</a> file for details.</p>
 
 <h2>🙏 Acknowledgments</h2>
 
