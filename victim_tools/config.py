@@ -18,7 +18,7 @@ class GeminiConfig:
         config.read(config_file)
 
         gemini_api = config.get('API', 'gemini_api', fallback=os.getenv('GEMINI_API'))
-        model_path = config.get('MODEL', 'model_path', fallback='models/gemini-1.5-flash')
+        model_path = config.get('MODEL', 'model_path', fallback='models/gemini-1.5-flash-8b-exp-0827')
         response_type = config.get('MODEL', 'response_type', fallback='application/json')
         geolocator_api = config.get('API', 'geolocator_api', fallback=os.getenv('GEOLOCATOR_API'))
         

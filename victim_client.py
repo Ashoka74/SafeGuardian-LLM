@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 
 # Configuration
 gemini_api = os.getenv("gemini_api")
-model_path = 'models/gemini-1.5-flash'  
+model_path = 'models/gemini-1.5-flash-8b-exp-0827'  
 response_type = 'application/json'
 config = GeminiConfig(gemini_api, model_path, response_type)
 
@@ -89,6 +89,7 @@ model = genai.GenerativeModel(
     safety_settings=config.safety,
     #tool_config = tool_config
     )
+
 
 # initialize chat
 chat = model.start_chat(enable_automatic_function_calling=True)

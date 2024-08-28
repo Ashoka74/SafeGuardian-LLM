@@ -54,6 +54,7 @@ def responses_to_df(data,col):
     return json_df
 
 
+
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 from pandas.api.types import (
@@ -434,8 +435,18 @@ def color_risk(val):
         color = 'white'
 
 
-my_dataset = responses_to_df(ref.get(), 'victim_info')
+with open("C:\\Users\\sinan\\OneDrive\\Desktop\\projects\\SafeGuardianAI\\synthethic_data_victims.json", "r") as file:
+    synth_data = json.load(file)
 
+if st.toggle('synth_dataset'):
+    data_df = pd.DataFrame.from_records(synth_data)
+    victim_info = data_df.victim_info.to_list()
+    my_dataset = pd.json_normalize(victim_info)
+    my_dataset.set_index(data_df.index, inplace=True)
+    my_dataset = my_dataset.sample(frac=1).reset_index(drop=True)
+else:
+    my_dataset = responses_to_df(ref.get(), 'victim_info')
+    my_dataset = my_dataset[my_dataset['emergency_status'].notna() & (my_dataset['emergency_status'] != '')]
 
 risk_map = {
     'critical': 4,
@@ -450,7 +461,7 @@ my_dataset['risk_nb'] = my_dataset['emergency_status'].map(risk_map)
 # default to 0
 my_dataset['risk_nb'] = my_dataset['risk_nb'].fillna(0)
 # add a widget select
-my_dataset = my_dataset[my_dataset['risk_nb'] > 0]
+#my_dataset = my_dataset[my_dataset['risk_nb'] > 0]
 
 
 map_1 = KeplerGl(height=800)
@@ -482,9 +493,11 @@ def color_rows(row):
 
 # Apply the styling function to the dataframe
 
-if my_dataset is not None :
-    parser = filter_dataframe(my_dataset[['emergency_status', 'personal_info.name', 'location.details', 'location.street', 'location.number', 'location.floor',   'location.lat', 'location.lon', 'medical_info.injuries', 'risk_nb']])
-    
+if my_dataset is not None : 
+    try:   
+        parser = filter_dataframe(my_dataset[['emergency_status', 'personal_info.name', 'location.details', 'location.street', 'location.number', 'location.floor',   'location.lat', 'location.lon', 'medical_info.injuries', 'risk_nb']])
+    except:
+        parser = filter_dataframe(my_dataset)
     st.session_state['parsed_responses'] = parser
     styled_df = parser.style.apply(color_rows, axis=1)
     st.dataframe(styled_df)

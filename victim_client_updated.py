@@ -19,6 +19,11 @@ import json
 import logging
 import jsonschema
 import os
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()
+
 import datetime
 import streamlit as st
 state_manager = StateManager()
@@ -34,7 +39,7 @@ logger = logging.getLogger(__name__)
 
 # Configuration
 gemini_api = os.getenv("gemini_api")
-model_path = 'models/gemini-1.5-flash'  
+model_path = 'models/gemini-1.5-pro-exp-0827'  
 response_type = 'application/json'
 config = GeminiConfig(gemini_api, model_path, response_type)
 
@@ -68,6 +73,8 @@ if "victim_info" not in st.session_state:
     st.session_state.victim_info = json_template
 if "victim_number" not in st.session_state:
     st.session_state['victim_number'] = set_key(st.session_state['victim_info'])
+if "victim_history" not in st.session_state:
+    st.session_state.victim_history = {}
 
 # Function calling definitions
 function_calling = {
@@ -76,6 +83,7 @@ function_calling = {
     #'get_victim_location': get_location_from_wifi,
     # Add more functions here!
 }
+
 
 system_instructions = "You are a post-disaster bot. Help victims while collecting valuable data for intervention teams. Your aim is to complete this template : {victim_info} Only return JSON output when calling function."
 
@@ -90,8 +98,11 @@ model = genai.GenerativeModel(
     #tool_config = tool_config
     )
 
+
+
 # initialize chat
 chat = model.start_chat(enable_automatic_function_calling=True)
+
 
 # initialize streamlit components
 def main():
@@ -99,17 +110,18 @@ def main():
     st.write("This bot is designed to help victims of natural disasters by providing support and information. It can also collect valuable data for intervention teams.")
 
 
-    # create 3 columns
-    left, middle, right = st.columns([.5, .1, .4])
-    # Chat input and display
-    with left:
-        chat_container(height=820)
+    # # create 3 columns
+    # left, middle, right = st.columns([.5, .1, .4])
+    # # Chat input and display
+    # with left:
+    #     chat_container(height=820)
 
-    # Victim information display
-    with right:
-        display_victim_info()
+    # # Victim information display
+    # with right:
+    #     display_victim_info()
 
-
+    chat_container(820)
+    display_victim_info()
 
 # create chat container
 def chat_container(height: int):
@@ -162,7 +174,7 @@ def chat_container(height: int):
 
 
 def display_victim_info():
-    st.write("Parsed Informations:\n\n", st.session_state.victim_info)
+    st.write("Parsed Informations:\n\n", st.session_state.victim_info) 
     # send data to FireBase
     try:
         update_(st.session_state['victim_number'], st.session_state['victim_info'])
@@ -174,16 +186,28 @@ def display_victim_info():
 
 
 def generate_response(user_input: str) -> str:
-    response = chat.send_message(user_input)
-    try:
-        return response.text
-    except AttributeError:
-        function_calls = extract_function_calls(response)
-        for function_call in function_calls:
-            for function_name, function_args in function_call.items():
-                return globals()[function_name](**function_args)
+        if st.session_state.victim_info != json_template:
+            try:
+                informations_collected = {k: v for k, v in st.session_state.victim_history.items() if v is not None and v != ""}
+                string_informations_collected = ", ".join([f"{k}: {v}" for k, v in informations_collected.items()])
+                response = chat.send_message(f"You already collected my {string_informations_collected}.{user_input}")
+                print(response)
+            except Exception as e:
+                print(e)
+                response = chat.send_message(user_input)
+        else:
+            response = chat.send_message(user_input)
+            print(response)
+        try:
+            return response.text
+        except AttributeError:
+            print("Google model not available, using Groq instead")
+            function_calls = extract_function_calls(response)
+            for function_call in function_calls:
+                for function_name, function_args in function_call.items():
+                    return globals()[function_name](**function_args)
 
-
+       
 
 def generate_manual_response(user_input: str) -> str:
     response = chat.send_message(user_input)
@@ -199,7 +223,10 @@ def generate_manual_response(user_input: str) -> str:
                     return "Error processing function arguments."
 
                 result = globals()[function_name](**function_args_dict)
+                # add to existing instead of replacing
                 st.session_state.victim_info = result
+                #st.session_state.victim_history = {**st.session_state.victim_history, **result}
+
                 return response.text
         else:
             return response.text
@@ -214,7 +241,6 @@ def extract_function_calls(response) -> List[Dict[str, Any]]:
                 function_call_dict[function_call.name][key] = value
             function_calls.append(function_call_dict)
     return function_calls
-
 
 
 def process_and_upload_victim_info(response: str, schema: Dict[str, Any]):

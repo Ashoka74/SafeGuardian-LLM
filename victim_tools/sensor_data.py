@@ -19,7 +19,7 @@ from typing import List, Tuple, Optional, Dict, Any
 
 from victim_tools.llm_utils import GeminiConfig
 
-model_path = 'models/gemini-1.5-flash'
+model_path = 'models/gemini-1.5-flash-8b-exp-0827'
 response_type = 'application/json'
 
 class SupportType(Enum):
