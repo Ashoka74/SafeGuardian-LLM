@@ -5,8 +5,11 @@
 
   <p><em>Decentralized AI-Driven Disaster Response Assistant</em></p>
 
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"/></a>
+  <a href="https://opensource.org/licenses/gpl-3-0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL 3.0"/></a>
   <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python 3.8+"/></a>
+  <a href="https://huggingface.co/organizations/SafeGuardianAI/share/kenFDVCMqdyHJYwsMwxWivXcwFqXBAAsHr">
+<img alt="Spaces" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue">
+</a>
   <a href="https://safeguardian-llm.streamlit.app/"><img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Streamlit App"/></a>
 </div>
 
@@ -14,8 +17,7 @@
 
 <p><b>SafeGuardianAI</b> is an innovative emergency response platform that harnesses the power of artificial intelligence to provide critical support during catastrophic events. By seamlessly integrating real-time data analysis, offline capabilities, and community-driven support, SafeGuardianAI bridges the gap between individuals, communities, and emergency services, ensuring a more coordinated and effective response to disasters.</p>
 
-https://github.com/user-attachments/assets/d19066d3-7d75-4c2c-9a38-00143029a140
-
+https://github.com/user-attachments/assets/e40dd7bf-9a91-4acd-9985-7910789c3e91
 
 
 <h2>🚀 Key Features</h2><ul>
@@ -59,7 +61,11 @@ https://github.com/user-attachments/assets/d19066d3-7d75-4c2c-9a38-00143029a140
 <h2>🚀 Quick Start</h2>
 
 <h3>
+
   
+
+
+
 [Live Demo](https://safeguardian-llm.streamlit.app/)
   
 </h3>
