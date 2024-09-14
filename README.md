@@ -66,7 +66,7 @@ https://github.com/user-attachments/assets/e40dd7bf-9a91-4acd-9985-7910789c3e91
 
 
 
-[Live Demo](https://safeguardian-llm.streamlit.app/)
+[Live Demo]([https://safeguardian-llm.streamlit.app/](https://github.com/Ashoka74/SafeGuardian-LLM.git))
   
 </h3>
 
