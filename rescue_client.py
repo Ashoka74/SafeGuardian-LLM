@@ -435,7 +435,7 @@ def color_risk(val):
         color = 'white'
 
 
-with open("C:\\Users\\sinan\\OneDrive\\Desktop\\projects\\SafeGuardianAI\\synthethic_data_victims.json", "r") as file:
+with open("synthethic_data_victims.json", "r") as file:
     synth_data = json.load(file)
 
 if st.toggle('synth_dataset'):
