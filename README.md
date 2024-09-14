@@ -66,14 +66,14 @@ https://github.com/user-attachments/assets/e40dd7bf-9a91-4acd-9985-7910789c3e91
 
 
 
-[Live Demo](https://safeguardian-llm.streamlit.app/)
+[Live Demo]([https://safeguardian-llm.streamlit.app/](https://github.com/Ashoka74/SafeGuardian-LLM.git))
   
 </h3>
 
 <ol>
   <li>Clone the repository:
-    <pre><code>git clone https://github.com/Ashoka74/SafeGuardianAI-LLM.git
-cd SafeGuardianAI</code></pre>
+    <pre><code>git clone https://github.com/Ashoka74/SafeGuardian-LLM.git
+cd SafeGuardian-LLM</code></pre>
   </li>
   <li>Install dependencies:
     <pre><code>pip install -r requirements.txt</code></pre>
