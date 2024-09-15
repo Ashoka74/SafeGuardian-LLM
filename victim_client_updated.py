@@ -89,6 +89,8 @@ system_instructions = "You are a post-disaster bot. Help victims while collectin
 
 #tool_config = tool_config_from_mode(mode='any', fns=function_calling.keys())
 
+
+
 # Gemini setup
 model = genai.GenerativeModel(
     config.model_path,
@@ -98,10 +100,30 @@ model = genai.GenerativeModel(
     #tool_config = tool_config
     )
 
+# from nexa.gguf import NexaTextInference
+
+# model_path = "gemma-1.1-2b-instruct:q4_0"
+
+# inference = NexaTextInference(
+#     model_path=model_path,
+#     local_path=None,
+#     stop_words=[],
+#     temperature=0.7,
+#     max_new_tokens=512,
+#     top_k=50,
+#     top_p=0.9,
+#     profiling=True
+# )
+
 
 
 # initialize chat
 chat = model.start_chat(enable_automatic_function_calling=True)
+# send a message
+#chat.send_message('Hello', stream=True)
+
+#output = chat.send_message('hello')
+
 
 
 # initialize streamlit components

@@ -55,7 +55,6 @@ def responses_to_df(data,col):
 
 
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
 
 from pandas.api.types import (
     is_categorical_dtype,
