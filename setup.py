@@ -18,6 +18,7 @@ setup(
     version="0.1.0",
     packages=find_packages(),
     install_requires=[
+        f"setuptools==70.0.0",
         f"fastapi==0.114.2",
         f"faster_whisper==0.7.1",
         f"firebase_admin==6.5.0",
