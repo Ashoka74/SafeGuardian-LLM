@@ -80,13 +80,25 @@ cd SafeGuardian-LLM</code></pre>
   </li>
   <li>Set up environment variables:
     Create a <code>.env</code> file in the project root with the following content:
-    <pre><code>GEMINI_API_KEY=your_gemini_api_key_here
-ELEVENLABS_API_KEY=your_elevenlabs_api_key_here
-GEOLOCATOR_API_KEY=your_geolocator_api_key_here
-FIREBASE_CONFIG=your_firebase_config_json_here</code></pre>
+    <pre><code>
+     gemini_api = 'XXX'
+     elevenlabs_api = 'XXX'
+     geolocator_api = 'XXX'
+     openai_api = 'XXX'
+     groq_api = 'XXX'
+     helicone_api = 'XXX'
+</code></pre>
   </li>
+  
+ 
+  <li>- Generate a .json access-key from FireBase</li>
+
+   ![generate_key_firebase](https://github.com/user-attachments/assets/528aa756-6215-4ccc-b4e0-f716dd152f68)
+  
+  <li>- rename the file disasterrescueai-firebase-adminsdk.json</li>
+  <li>- paste the file under the <code>rescue_tools</code> folder</li>
   <li>Run the application:
-    <pre><code>streamlit run app</code></pre>
+    <pre><code>streamlit run app.py</code></pre>
   </li>
 </ol>
 
