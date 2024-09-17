@@ -38,7 +38,7 @@ https://github.com/user-attachments/assets/e40dd7bf-9a91-4acd-9985-7910789c3e91
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/1ed3b76c-66e1-42eb-9f30-ee64bce13358" alt="UI Screenshot" width="45%" style="margin-right: 10px;"/>
-  <img src="https://github.com/user-attachments/assets/e8476376-a64f-4b68-8367-26d671813817" alt="Map View" width="45%"/>
+
   <img src="https://github.com/user-attachments/assets/0c3988f3-a136-42b3-814b-117689352dd3" alt="Priority Mapping" width="45%"/>
   <img src="https://github.com/user-attachments/assets/7cd4525a-abd0-477e-9d83-2ea729635bb9" alt="Optimized Path" width="45%"/>
 
