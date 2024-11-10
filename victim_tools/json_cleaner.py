@@ -1,3 +1,10 @@
+"""
+JSON Processing Module for Victim Data
+====================================
+Handles extraction, cleaning, and validation of JSON responses for victim information.
+Includes error recovery and Streamlit session state management.
+"""
+
 import json
 import logging
 from typing import Dict, Any
@@ -10,7 +17,11 @@ logger = logging.getLogger(__name__)
 
 def extract_json_from_response(response: str) -> str:
     """
-    Extract JSON content from a string that may contain additional text.
+    Extract JSON content from code blocks or raw response.
+    Args:
+        response: String that may contain JSON within markdown blocks
+    Returns:
+        Extracted JSON string or original response
     """
     json_match = re.search(r'```json\s*([\s\S]*?)\s*```', response)
     if json_match:
@@ -19,7 +30,10 @@ def extract_json_from_response(response: str) -> str:
 
 def clean_json_string(json_str: str) -> str:
     """
-    Clean the JSON string by removing problematic characters and formatting issues.
+    Clean JSON string by fixing common formatting issues.
+    - Removes whitespace
+    - Replaces None with null
+    - Fixes quotes and newlines
     """
     # Remove any leading/trailing whitespace
     json_str = json_str.strip()
@@ -37,7 +51,8 @@ def clean_json_string(json_str: str) -> str:
 
 def parse_json_safely(json_str: str) -> Dict[str, Any]:
     """
-    Attempt to parse JSON string, handling common issues.
+    Parse JSON with error recovery attempts.
+    Logs warnings/errors during parsing.
     """
     try:
         return json.loads(json_str)
@@ -54,7 +69,7 @@ def parse_json_safely(json_str: str) -> Dict[str, Any]:
 
 def validate_json_schema(data: Dict[str, Any], schema: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Validate JSON data against a schema, attempting to fix issues.
+    Validate JSON against schema and attempt fixes for missing fields.
     """
     try:
         validate(instance=data, schema=schema)
@@ -78,7 +93,7 @@ def validate_json_schema(data: Dict[str, Any], schema: Dict[str, Any]) -> Dict[s
 
 def process_json_response(response: str, schema: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Process a JSON response, handling various potential issues.
+    Process JSON through extraction, parsing, and validation pipeline.
     """
     try:
         # Extract JSON content
@@ -95,8 +110,11 @@ def process_json_response(response: str, schema: Dict[str, Any]) -> Dict[str, An
         logger.error(f"Error processing JSON response: {e}")
         raise
 
-# Usage example
 def upload_victim_info(response: str, schema: Dict[str, Any], timestamp=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) -> None:
+    """
+    Updates victim info in session state with timestamp.
+    Logs success/failure of update.
+    """
     try:
         processed_json = process_json_response(response, schema)
         st.session_state['victim_info'] = processed_json
