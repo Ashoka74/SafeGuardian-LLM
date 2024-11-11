@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Script: get_rescue_data.py
+Script: rescue_data.py
 Description: Fetches rescue data for a specific incident number from San Francisco's open data portal.
 Author: LangGang
 """
