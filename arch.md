@@ -1,3 +1,4 @@
+```mermaid
 flowchart TB
     %% Client Applications
     subgraph VictimClients["Victim Applications"]
@@ -145,3 +146,4 @@ flowchart TB
 
     %% Connection Styling
     linkStyle default stroke:#4DFFD2,stroke-width:2px
+'''
